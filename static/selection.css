@@ -1,0 +1,69 @@
+body {
+    background: linear-gradient(120deg, #0099ff, #9e31d0);
+    background-size: cover;
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px; /* Add margin to the top of the container */
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px; /* Add margin to the bottom of the heading */
+}
+
+form {
+    margin-top: 20px;/* Remove margin-top from the form */
+}
+
+/* Add any additional styles you need for form elements */
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+.ct1{
+        background-color: #db3447;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+}
+
+.ct1:hover{
+    background-color: #921725;
+}
