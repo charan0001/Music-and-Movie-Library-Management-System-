@@ -14,7 +14,7 @@ app.config['SECRET_KEY'] = 'your_secret_key'
 db_config = {
     'host': 'localhost',
     'user': 'root',
-    'password': 'charanc9',
+    'password': 'your sql password',
     'database': 'music_movie',
 }
 
