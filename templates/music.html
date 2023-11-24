@@ -1,0 +1,30 @@
+<!-- templates/music.html -->
+<head>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='music.css') }}">
+</head>
+<body>
+    
+    <form method="get" action="{{ url_for('selection') }}">
+        <button type="submit" class="button">Back</button>
+    </form>
+    <form method="get" action="{{ url_for('playlist') }}">
+        <button type="submit" class="button">Your Playlist</button>
+    </form>
+    <div class="song-container"> <!-- Add this div with the song-container class -->
+        {% for song in songs %}
+            <div class="song-card">
+                <h3>{{ song.title }} - {{ song.artist }}</h3>
+                <audio controls>
+                    <source src="{{ url_for('audio', music_id=song.id) }}" type="audio/mpeg">
+                    Your browser does not support the audio tag.
+                </audio>
+                <form method="post" action="{{ url_for('add_to_playlist', music_id=song.id) }}">
+                    <button type="submit" class="button">Add to Playlist</button>
+                </form>
+            </div>
+        {% endfor %}
+    </div>
+
+    
+</body>

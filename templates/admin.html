@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+
+    <script>
+        function toggleFields() {
+            var musicRadio = document.getElementById('music');
+            var artistLabel = document.getElementById('artist-label');
+            var artistField = document.getElementById('artist');
+            var genreLabel = document.getElementById('genre-label');
+            var genreField = document.getElementById('genre');
+
+            if (musicRadio.checked) {
+                artistLabel.style.display = 'block';
+                artistField.style.display = 'block';
+                genreLabel.style.display = 'none';
+                genreField.style.display = 'none';
+            } else {
+                artistLabel.style.display = 'none';
+                artistField.style.display = 'none';
+                genreLabel.style.display = 'block';
+                genreField.style.display = 'block';
+            }
+        }
+    </script>
+</head>
+<body>
+    
+    <form method="post" action="{{ url_for('admin') }}" enctype="multipart/form-data">
+        <label for="title"><b>Title:</b></label>
+        <input type="text" id="title" name="title" required>
+        <br>
+        <label id="artist-label" for="artist"><b>Artist:</b></label>
+        <input type="text" id="artist" name="artist">
+        <br>
+        <label id="genre-label" for="genre"><b>Genre:</b></label>
+        <input type="text" id="genre" name="genre">
+        <br>
+        <label for="file"><b>File:</b></label>
+        <input type="file" id="file" name="file" accept=".mp3, .mp4" >
+        <br>
+        <label for="music"><b>Music:</b></label>
+        <input type="radio" id="music" name="type" value="music" onclick="toggleFields()">
+        <label for="movie"><b>Movie:</b></label>
+        <input type="radio" id="movie" name="type" value="movie" onclick="toggleFields()">
+        <br>
+        <button type="submit" class="button"><b>Add</b></button>
+    </form>
+    <form method="get" action="{{ url_for('home') }}">
+        <button type="submit" class="redbutton">Logout</button>
+    </form>
+    <div class="button-container">
+
+        <!-- View Users Button -->
+        <button onclick="window.location.assign('{{ url_for('view_users')}}')" class="button">View Users</button>
+
+        <!-- View Music Button -->
+        <button onclick="window.location.assign('{{ url_for('view_music') }}')" class="button">View Music</button>
+
+        <!-- View Movies Button -->
+        <button onclick="window.location.assign('{{ url_for('view_movies') }}')" class="button">View Movies</button>
+
+    </div>
+    
+    <!-- Display Users Cards -->
+    <div class="card-container">
+        {% for user in users %}
+            {% if user.username != 'admin' %} {# Exclude the admin user #}
+                {% include 'user_card.html' %}
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <!-- Display Music Cards -->
+    <div class="card-container">
+        {% for song in music %}
+            {% include 'music_card.html' %}
+        {% endfor %}
+    </div>
+
+    <!-- Display Movie Cards -->
+    <div class="card-container">
+        {% for movie in movies %}
+            {% include 'movie_card.html' %}
+        {% endfor %}
+    </div>
+    
+
+</body>
+</html>

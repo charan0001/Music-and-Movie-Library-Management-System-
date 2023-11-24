@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='selection.css') }}">
+
+</head>
+<body>
+    <div class="container">
+    <form method="get" action="{{ url_for('music') }}">
+        <button type="submit">Music</button>
+    </form>
+    <form method="get" action="{{ url_for('movies') }}">
+        <button type="submit">Movies</button>
+    </form>
+    <form method="get" action="{{ url_for('change_username') }}">
+        <button type="submit">Change Username</button>
+    </form>
+    <form method="get" action="{{ url_for('home') }}">
+        <button type="submit" class="ct1">Logout</button>
+    </form>
+    </div>
+</body>
+</html>

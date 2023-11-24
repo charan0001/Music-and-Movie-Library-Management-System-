@@ -1,0 +1,31 @@
+<!-- templates/playlist.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playlist</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='playlist.css') }}">
+</head>
+<body>
+    <form method="get" action="{{ url_for('music') }}">
+        <button type="submit" class="button">Music</button>
+    </form>
+    
+    <b><p>Total Songs in Playlist: {{ song_count }}</p></b>
+
+    {% for song in playlist_songs %}
+        <div class="song-card">
+            <h3>{{ song.title }} - {{ song.artist }}</h3>
+            <audio controls>
+                <source src="{{ url_for('audio', music_id=song.id) }}" type="audio/mpeg">
+                Your browser does not support the audio tag.
+            </audio>
+            <form method="post" action="{{ url_for('remove_from_playlist', music_id=song.id) }}">
+                <button type="submit" class="redbutton">Remove from Playlist</button>
+            </form>
+        </div>
+    {% endfor %}
+</body>
+</html>

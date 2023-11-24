@@ -1,0 +1,35 @@
+<!-- templates/collection.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='collection.css') }}">
+
+</head>
+<body>
+    
+    <form method="get" action="{{ url_for('movies') }}">
+        <button type="submit" class="button">Movies</button>
+    </form>
+    
+    <b><p>Total Movies in Collection: {{ movie_count }}</p></b>
+
+    <div class="movie-container"> <!-- Add this div with the movie-container class -->
+        {% for movie in collection_movies %}
+            <div class="movie-card">
+                <h3>{{ movie.title }} - {{ movie.genre }}</h3>
+                <p>{{ movie.description }}</p>
+                <video width="320" height="240" controls>
+                    <source src="{{ url_for('video', movie_id=movie.id) }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <form method="post" action="{{ url_for('remove_from_collection', movie_id=movie.id) }}">
+                    <button type="submit" class="redbutton">Remove from Collection</button>
+                </form>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
