@@ -1,5 +1,5 @@
 # Music-and-Movie-Library-Management-System-
-Create a database in MySQL nameed as music_movie using 'CREATE database music_movie;'
+Create a database in MySQL named as music_movie using 'CREATE database music_movie;'
 
 Login as Admin (Username:admin,Password:adminpassword) in Admin Login
 
